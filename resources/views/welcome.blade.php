@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Ecommerce Site
+                    Ecommerce Site Manish
                 </div>
 
                 <div class="links">
