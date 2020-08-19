@@ -19,4 +19,12 @@ Route::get('/login', function () {
     return view('login/login');
 });
 
-Route::post('loginCheck','Login\LoginController@loginCheck');
+Route::post('dashboard','Login\LoginController@postLogin');
+Route::get('logout','Login\LoginController@destroy');
+
+Route::group(['middleware' => ['auth']], function () {
+
+Route::get('dashboard', function () {
+      return view('admin.dashboard');
+	});
+});
