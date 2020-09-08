@@ -10,8 +10,8 @@
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <div class="card-header align-items-left py-3">
+                 <a href="{{asset('user/add')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add User</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -57,7 +57,19 @@
                                 {{ $user->mobile_number }}
                             @endif
                       </td>
-                      <td></td>
+                      <td>
+                            <a class="collapsed"  href="{{ asset('user/edit/'.$user->id) }}" >
+                              <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <!-- <a class="collapsed" href="{{ asset('user/delete/'.$user->id) }}">
+                              <i class="fas fa-trash"></i>
+                            </a> -->
+                            <a href="{{ url('user/delete',$user->id) }}" class="btn btn-danger btn-sm confirm"
+                                 data-method="DELETE" 
+                                 title="Delete" data-confirm="Are you sure to delete this User?">
+                                <i class="fas fa-trash"></i>
+                          </a>
+                      </td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -69,6 +81,18 @@
 
 
 </div>
+<script>
+  var deleteLinks = document.querySelectorAll('.confirm');
+      for (var i = 0; i < deleteLinks.length; i++) {
+          deleteLinks[i].addEventListener('click', function(event) {
+              event.preventDefault();
 
+              var choice = confirm(this.getAttribute('data-confirm'));
 
+              if (choice) {
+                  window.location.href = this.getAttribute('href');
+              }
+          });
+      }
+</script>
 @include("layouts.footer")

@@ -26,7 +26,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('dashboard', function () {
       return view('admin.dashboard');
-	});
-});
+    });
 
 Route::get('users','User\UserController@getUsers');
+Route::get('user/add','User\UserController@addUser');
+Route::post('user/add','User\UserController@postaddUser');
+Route::get('user/edit/{userid}','User\UserController@editUser');
+Route::post('user/edit/{userid}','User\UserController@posteditUser');
+Route::any('user/delete/{userid}','User\UserController@destroy');
+
+});
+
