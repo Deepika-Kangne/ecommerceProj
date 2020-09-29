@@ -25,9 +25,9 @@ class EditUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'user_type' => 'required',
-            'mobile' => 'required',
-            'email' => 'required|email|unique:users,email,'.$this->route('userid').',id'
+            // 'user_type' => 'required',
+            // 'mobile' => 'required',
+            // 'email' => 'required|email|unique:users,email,'.$this->route('userid').',id'
 
         ];
     }

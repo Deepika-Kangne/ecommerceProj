@@ -52,6 +52,7 @@
   <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
   <!-- Page level plugins -->
+  
   <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
   <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>

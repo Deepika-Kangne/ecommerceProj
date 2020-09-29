@@ -43,13 +43,23 @@ class UserController extends BaseController
     }
 
     public function editUser($userid){
+       
         $userData = User::find($userid);
         return view('admin/users/userEdit',['user' => $userData]);
     }
 
     public function posteditUser(EditUserRequest $request)
     {
-       dd($request);
+        $admin = User::find($request->userid);
+        $admin->username = str_replace(' ', '', strtolower($request->input('name')));
+        $admin->fill($request->input());
+        if ($request->input('password')) {
+            $admin->password = bcrypt($request->input('password'));
+        }
+        $admin->save();
+        Session::flash('success', 'User Successfully Edited');
+        return view('admin/users/userEdit',['user' => $admin]);
+        // return redirect('admin/admin-user');
     }
 
     public function destroy($userid)

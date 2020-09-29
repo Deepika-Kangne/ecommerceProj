@@ -10,9 +10,25 @@
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header align-items-left py-3">
+          <div class="card-header align-items-left py-3">
+                @if(Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                @if($errors->any())
+                    @foreach($errors->all() as $key => $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                            {{$error}}
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class="card-body">
+            <!--begin::Form-->
+           
             <form action="{{ asset('user/edit/'.$user->id) }}" class="m-form m-form--fit m-form--label-align-right" method="post">
                 <div class="m-portlet__body">
                     <div class="m-form__section m-form__section--first">
@@ -20,7 +36,7 @@
 
                          <div class="form-group m-form__group row">
                             <label class="col-lg-3 col-form-label">
-                                Name:
+                                Nameff:
                             </label>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control m-input" name="name" value="{{ Request::old('name',$user->username) }}" placeholder="Enter First Name">
@@ -92,6 +108,7 @@
                     </div>
                 </div>  
             </form>
+            <!--end::Form-->
             </div>
           </div>
 

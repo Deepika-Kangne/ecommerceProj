@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
+// use Illuminate\Routing\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('dashboard', function () {
       return view('admin.dashboard');
     });
+
+//Route::resource('user','UserController');
 
 Route::get('users','User\UserController@getUsers');
 Route::get('user/add','User\UserController@addUser');
